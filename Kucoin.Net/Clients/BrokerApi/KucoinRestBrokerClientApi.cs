@@ -18,6 +18,7 @@ using Kucoin.Net.Objects.Models.Broker.Response;
 using Kucoin.Net.Objects.Models.Broker.Request;
 using Kucoin.Net.Clients;
 using Kucoin.Net.Objects.Options;
+using Kucoin.Net.Objects;
 
 namespace KucoinBroker.Net
 {
@@ -45,7 +46,7 @@ namespace KucoinBroker.Net
         }
 
         protected override AuthenticationProvider CreateAuthenticationProvider(ApiCredentials credentials)
-            => new KucoinBrokerAuthenticationProvider((KucoinBrokerApiCredentials)credentials);
+            => new KucoinAuthenticationProvider((KucoinApiCredentials)credentials);
 
         internal async Task<WebCallResult<T>> SendAsync<T>(RequestDefinition definition, ParameterCollection? parameters, CancellationToken cancellationToken, int? weight = null)
         {
