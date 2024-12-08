@@ -6,6 +6,7 @@ using Kucoin.Net.Interfaces.Clients.FuturesApi;
 using Kucoin.Net.Interfaces.Clients.SpotApi;
 using Kucoin.Net.Objects;
 using Kucoin.Net.Objects.Options;
+using KucoinBroker.Net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -22,6 +23,8 @@ namespace Kucoin.Net.Clients
 
         /// <inheritdoc />
         public IKucoinRestClientFuturesApi FuturesApi { get; }
+
+        public IKucoinRestBrokerClientApi BrokerApi { get; }
 
         /// <summary>
         /// Create a new instance of KucoinClient
@@ -44,6 +47,7 @@ namespace Kucoin.Net.Clients
 
             SpotApi = AddApiClient(new KucoinRestClientSpotApi(_logger, httpClient, this, options.Value));
             FuturesApi = AddApiClient(new KucoinRestClientFuturesApi(_logger, httpClient, this, options.Value));
+            BrokerApi = AddApiClient(new KucoinRestBrokerClientApi(_logger, httpClient, this, options.Value));
         }
 
         /// <inheritdoc />
@@ -51,6 +55,7 @@ namespace Kucoin.Net.Clients
         {
             SpotApi.SetApiCredentials(credentials);
             FuturesApi.SetApiCredentials(credentials);
+            BrokerApi.SetApiCredentials(credentials);
         }
 
         /// <summary>

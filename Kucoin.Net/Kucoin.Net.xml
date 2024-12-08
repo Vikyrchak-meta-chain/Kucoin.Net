@@ -4,6 +4,186 @@
         <name>Kucoin.Net</name>
     </assembly>
     <members>
+        <member name="T:KucoinBroker.Net.KucoinRestBrokerClientApi">
+            <inheritdoc cref="T:KucoinBroker.Net.IKucoinRestBrokerClientApi" />
+        </member>
+        <member name="M:KucoinBroker.Net.KucoinRestBrokerClientApi.GetTimeSyncInfo">
+            <inheritdoc />
+        </member>
+        <member name="M:KucoinBroker.Net.KucoinRestBrokerClientApi.FormatSymbol(System.String,System.String,CryptoExchange.Net.SharedApis.TradingMode,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.GetServerTimeAsync(System.Threading.CancellationToken)">
+            <summary>
+            Get the current server time.
+            </summary>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.CreateSubAccountAsync(Kucoin.Net.Objects.Models.Broker.Request.SubAccountCreateRequest,System.Threading.CancellationToken)">
+            <summary>
+            Create a Broker sub-account.
+            Documentation: https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/create-broker-subaccount
+            </summary>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.TransferFundsAsync(Kucoin.Net.Objects.Models.Broker.Request.BrokerTransferRequest,System.Threading.CancellationToken)">
+            <summary>
+            Transfer funds between Broker account and Broker sub-accounts.
+            Documentation: https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/broker-transfer
+            </summary>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.GetBrokerInfoAsync(System.Threading.CancellationToken)">
+            <summary>
+            Get basic information about the current Broker.
+            Documentation: https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/get-broker-info
+            </summary>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.GetBrokerSubAccountsAsync(System.Nullable{System.Int32},System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Get the sub-accounts created by the Broker.
+            Documentation: https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/get-broker-subaccount
+            </summary>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.CreateBrokerSubAccountApiKeyAsync(Kucoin.Net.Objects.Models.Broker.Request.CreateBrokerSubAccountApiKeyRequest,System.Threading.CancellationToken)">
+            <summary>
+            Creates a Broker subaccount APIKEY.
+            </summary>
+            <param name="request">The request object containing all the parameters.</param>
+            <returns>A WebCallResult with the API key data.</returns>
+            <remarks>For more details, refer to the [documentation](https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/create-broker-subaccount-apikey).</remarks>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.GetBrokerSubAccountApiKeyAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the API keys for a Broker subaccount.
+            </summary>
+            <param name="uid">Subaccount UID.</param>
+            <param name="apiKey">Optional API key to filter by.</param>
+            <param name="ct">Cancellation token for asynchronous operations.</param>
+            <returns>A task representing the asynchronous operation, with a result containing the response.</returns>
+            <seealso cref="!:https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/get-broker-subaccount-apikey"/>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.ModifyBrokerSubAccountApiKeyAsync(Kucoin.Net.Objects.Models.Broker.Request.ModifyBrokerSubAccountApiKeyRequest,System.Threading.CancellationToken)">
+            <summary>
+            Modify the API key for a Broker subaccount.
+            </summary>
+            <param name="request">Request data for modifying the Broker subaccount API key.</param>
+            <param name="ct">Cancellation token for asynchronous operations.</param>
+            <returns>A task representing the asynchronous operation, with a result containing the response.</returns>
+            <seealso cref="!:https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/modify-broker-subaccount-apikey"/>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.DeleteBrokerSubAccountApiKeyAsync(Kucoin.Net.Objects.Models.Broker.Request.DeleteBrokerSubAccountApiKeyRequest,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the Broker's sub-account API key.
+            </summary>
+            <param name="request">Request data for deleting the Broker subaccount API key.</param>
+            <param name="ct">Cancellation token for asynchronous operations.</param>
+            <returns>A task representing the asynchronous operation, with a result containing the response.</returns>
+            <seealso cref="!:https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/delete-broker-subaccount-apikey"/>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.GetBrokerSubAccountsDepositRecordsAsync(Kucoin.Net.Objects.Models.Broker.Request.GetBrokerSubAccountsDepositRecordsRequest,System.Threading.CancellationToken)">
+            <summary>
+            Gets the deposit records for the Broker's sub-accounts.
+            </summary>
+            <param name="request">Request object containing filter parameters for the deposit records.</param>
+            <param name="ct">Cancellation token for asynchronous operations.</param>
+            <returns>A task representing the asynchronous operation, with a result containing the deposit records.</returns>
+            <seealso cref="!:https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/get-broker-sub-accounts-deposit-records"/>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.GetTransferRecordDetailsAsync(Kucoin.Net.Objects.Models.Broker.Request.GetTransferRecordDetailsRequest,System.Threading.CancellationToken)">
+            <summary>
+            Gets the details of a transfer record for the broker and its sub-accounts.
+            </summary>
+            <param name="request">The transfer record details request object containing the transfer order ID.</param>
+            <param name="ct">Cancellation token for asynchronous operations.</param>
+            <returns>A task representing the asynchronous operation, with the result containing the transfer record details.</returns>
+            <seealso cref="!:https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/get-transfer-record-details"/>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.GetSingleDepositByHashAsync(Kucoin.Net.Objects.Models.Broker.Request.GetSingleDepositByHashRequest,System.Threading.CancellationToken)">
+            <summary>
+            Gets a single deposit record by hash for the broker's sub-accounts.
+            </summary>
+            <param name="request">The request object containing the hash and currency of the deposit record.</param>
+            <param name="ct">Cancellation token for asynchronous operations.</param>
+            <returns>A task representing the asynchronous operation, with the result containing the deposit record details.</returns>
+            <seealso cref="!:https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/get-single-deposit-by-hash"/>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.GetSingleWithdrawalByIdAsync(Kucoin.Net.Objects.Models.Broker.Request.GetSingleWithdrawalByIdRequest,System.Threading.CancellationToken)">
+            <summary>
+            Gets a single withdrawal record by withdrawal ID for the broker's sub-accounts.
+            </summary>
+            <param name="request">The request object containing the withdrawal ID.</param>
+            <param name="ct">Cancellation token for asynchronous operations.</param>
+            <returns>A task representing the asynchronous operation, with the result containing the withdrawal record details.</returns>
+            <seealso cref="!:https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/get-single-withdrawal-by-withdrawal-id"/>
+        </member>
+        <member name="M:KucoinBroker.Net.IKucoinRestBrokerClientApi.DownloadBrokerRebateOrderAsync(Kucoin.Net.Objects.Models.Broker.Request.DownloadBrokerRebateOrderRequest,System.Threading.CancellationToken)">
+            <summary>
+            Downloads the Broker rebate orders within a specified date range and transaction type.
+            </summary>
+            <param name="request">The request object containing the parameters for the rebate order download.</param>
+            <param name="ct">Cancellation token for asynchronous operations.</param>
+            <returns>A task representing the asynchronous operation, with the result containing the download URL of the rebate order file.</returns>
+            <seealso cref="!:https://www.kucoin.com/docs/broker/exchange-broker/api-endpoint/download-broker-rebate-order"/>
+        </member>
+        <member name="T:KucoinBroker.Net.Objects.KucoinBrokerApiCredentials">
+            <summary>
+            Credentials for the Kucoin Broker API
+            </summary>
+        </member>
+        <member name="P:KucoinBroker.Net.Objects.KucoinBrokerApiCredentials.PassPhrase">
+            <summary>
+            The pass phrase
+            </summary>
+        </member>
+        <member name="P:KucoinBroker.Net.Objects.KucoinBrokerApiCredentials.BrokerKey">
+            <summary>
+            The broker key
+            </summary>
+        </member>
+        <member name="P:KucoinBroker.Net.Objects.KucoinBrokerApiCredentials.CredentialsType">
+            <summary>
+            Credentials type (HMAC, RSA XML, or RSA PEM)
+            </summary>
+        </member>
+        <member name="M:KucoinBroker.Net.Objects.KucoinBrokerApiCredentials.#ctor(System.String,System.String,System.String,System.String,CryptoExchange.Net.Authentication.ApiCredentialsType)">
+            <summary>
+            Creates new API credentials. Keep this information safe.
+            </summary>
+            <param name="apiKey">The API key</param>
+            <param name="apiSecret">The API secret</param>
+            <param name="apiPassPhrase">The API passPhrase</param>
+            <param name="apiBrokerKey">The API broker key</param>
+            <param name="credentialsType">The type of credentials being used</param>
+            <exception cref="T:System.ArgumentException">Thrown when any of the arguments are invalid or empty.</exception>
+        </member>
+        <member name="M:KucoinBroker.Net.Objects.KucoinBrokerApiCredentials.#ctor(System.String,System.String,System.String,System.String,System.String,CryptoExchange.Net.Authentication.ApiCredentialsType)">
+            <summary>
+            Create Api credentials providing a stream containing JSON data. The JSON data should include four values: apiKey, apiSecret, apiPassPhrase, and apiBrokerKey.
+            </summary>
+            <param name="jsonData">The JSON data as a string</param>
+            <param name="identifierKey">A key to identify the credentials for the API. Defaults to 'apiKey'.</param>
+            <param name="identifierSecret">A key to identify the credentials for the API. Defaults to 'apiSecret'.</param>
+            <param name="identifierPassPhrase">A key to identify the credentials for the API. Defaults to 'apiPassPhrase'.</param>
+            <param name="identifierBrokerKey">A key to identify the credentials for the API. Defaults to 'apiBrokerKey'.</param>
+            <param name="credentialsType">The type of credentials being used</param>
+            <exception cref="T:System.ArgumentException">Thrown when the input stream does not contain valid JSON or required keys.</exception>
+        </member>
+        <member name="M:KucoinBroker.Net.Objects.KucoinBrokerApiCredentials.Copy">
+            <inheritdoc />
+        </member>
+        <member name="P:KucoinBroker.Net.KucoinBrokerEnvironment.Live">
+            <summary>
+            Live environment
+            </summary>
+        </member>
+        <member name="P:KucoinBroker.Net.KucoinBrokerRestApiOptions.BrokerName">
+            <summary>
+            The broker reference name to use
+            </summary>
+        </member>
+        <member name="P:KucoinBroker.Net.KucoinBrokerRestApiOptions.BrokerKey">
+            <summary>
+            The private key of the broker
+            </summary>
+        </member>
         <member name="T:Kucoin.Net.Clients.FuturesApi.KucoinRestClientFuturesApi">
             <inheritdoc cref="T:Kucoin.Net.Interfaces.Clients.FuturesApi.IKucoinRestClientFuturesApi" />
         </member>
